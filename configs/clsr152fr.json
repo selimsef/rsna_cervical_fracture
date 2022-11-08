@@ -1,0 +1,42 @@
+{
+  "network": "ClassifierResNet3dCSN2P1D",
+  "encoder_params": {
+    "encoder": "r152ir",
+    "num_classes": 8,
+    "pool": "max"
+  },
+  "multiplier": 8,
+  "slice_size": 40,
+  "crop_size": 256,
+  "augmentations": "CropAugsFullRes",
+  "dataset": {
+    "type": "ClassifierDatasetCropsFullRes",
+    "params": {
+    }
+  },
+  "optimizer": {
+        "train_bs": 16,
+        "val_bs": 1,
+        "type": "AdamW",
+        "weight_decay": 1e-2,
+        "learning_rate": 0.0003,
+        "schedule": {
+            "type": "cosine",
+            "mode": "step",
+            "epochs": 50,
+            "params": {
+              "eta_min": 1e-5
+            }
+        }
+    },
+   "losses": [
+     {
+       "name": "BCE",
+       "type": "BcePureLossCalc",
+       "weight": 1.0,
+       "display": true,
+       "params": {
+       }
+     }
+   ]
+}

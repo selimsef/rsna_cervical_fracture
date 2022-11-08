@@ -1,0 +1,40 @@
+{
+  "network": "ResNet3dCSN2P1D",
+  "encoder_params": {
+    "encoder": "r50ir"
+
+  },
+  "multiplier": 64,
+  "slice_size": 64,
+  "augmentations": "SameResAugsAlbu",
+  "dataset": {
+    "type": "DatasetSeq",
+    "params": {
+    }
+  },
+  "optimizer": {
+        "train_bs": 4,
+        "val_bs": 1,
+        "type": "AdamW",
+        "weight_decay": 1e-2,
+        "learning_rate": 0.0002,
+        "schedule": {
+            "type": "cosine",
+            "mode": "step",
+            "epochs": 40,
+            "params": {
+              "eta_min": 1e-5
+            }
+        }
+    },
+   "losses": [
+     {
+       "name": "msk",
+       "type": "SegFastLossCalculator",
+       "weight": 1.0,
+       "display": true,
+       "params": {
+       }
+     }
+   ]
+}

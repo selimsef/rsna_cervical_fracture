@@ -1,0 +1,8 @@
+torch
+torchvision
+torchaudio
+albumentations
+tqdm
+GDCM
+pylibjpeg
+pylibjpeg-libjpeg
