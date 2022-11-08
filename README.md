@@ -38,6 +38,7 @@ I used [mmaction2](https://github.com/open-mmlab/mmaction2)'s implementation of 
 - Augmentations: 2D augs, replay compose in Albumentations library, flips, rotations, geometric. Needed to make more augs compared to segmentation pipeline
 
 ### How to reproduce 
+- inference kernel on Kaggle with trained weights https://www.kaggle.com/code/selimsef/rsna-csn-segmentor-classifier
 - Requirements are specified in requirements.txt
 - end-to-end training is done with `run_all.sh <dataset_dir>`. This will preprocess images and store them in the same dataset directory, hence one needs additional space on the disk. Then it will train models and average checkpoints.
 - Note it is for multigpu training for 4x48g gpus. 
